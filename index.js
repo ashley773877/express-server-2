@@ -6,7 +6,8 @@ const userRouter = require('./routes/user');
 const productRouter = require('./routes/products');
 
 //array is empty for now
-const comments = [];
+const comments = ['userId: 4' , 'postId: 5' , 'body: words'];
+
 
 const app = express();
 const PORT = 3000;
@@ -81,6 +82,14 @@ app.route('/comments/:id')
     const commentID = parseInt(req.params.id);
     const updateBody = req.body.body;
     const comment = comments.find(comment => comment.id === commentId);
+
+    if(comment) {
+        comment.body = updateBody;
+        res.json({ message: 'comment updated sucessfully', comment});
+
+    } else {
+        res.status(404).json({ error:'comment not found'});
+    }
 })
 .delete((req, res) => {
     const commentId = parseInt(req.params.id);
