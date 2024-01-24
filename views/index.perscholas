@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#title#</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>#title#</h1>
+      <div>#content#</div>
+
+<!-- this is to make the image appear on website -->
+      <div>
+      <img src="http://localhost:3000/download" width="500px" height= "500px"/>
+      
+      <!-- or you can just use this -->
+      <img src="photo-15.png" width="500px" height= "500px"/>
+      </div> 
+      
+
+      <!-- this is to make a button that will take you somewhere -->
+      <a href="http://localhost:3000/download">
+        <button>click here to download</button>
+      </a>
+
+
+    </div>
+  </body>
+</html>
