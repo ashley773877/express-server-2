@@ -5,6 +5,9 @@ const myMiddlewares = require('./mymiddlewears/middlewear');
 const userRouter = require('./routes/user');
 const productRouter = require('./routes/products');
 
+//array is empty for now
+const comments = [];
+
 const app = express();
 const PORT = 3000;
 
@@ -47,6 +50,22 @@ app.use(express.static('./assets'));
 
 
 // Routes
+
+//route to retrieve posts by user id
+app.get('/api/users/:id/posts', (req, res) =>{
+    const userID = parseINT(req.params.id);
+})
+
+// route to retrieve posts by user id using query parameter
+app.get('api/posts', (req, res) => {
+    const userID =parseINT(req.query.userId);
+})
+
+//route to reteieve comments
+app.get('/comments' , (req, res) => {
+    res.json(comments);
+});
+
 app.use('/user', userRouter);
 app.use('/product', productRouter);
 
