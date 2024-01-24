@@ -61,9 +61,30 @@ app.get('api/posts', (req, res) => {
     const userID =parseINT(req.query.userId);
 })
 
-//route to reteieve comments
-app.get('/comments' , (req, res) => {
+//GET and POST route for comments
+app.route('/comments')
+.get((req, res) => {
     res.json(comments);
+})
+.post((req, res) => {
+    const {userID, postId, body} = req.body;
+});
+
+//route to handle GET, PATCH AND DDELETE
+//for a specific comment by id
+app.route('/comments/:id')
+.get((req, res) => {
+    const commentID = parseInt(req.params.id);
+    const comment = comments.find(comment => comment.id === commentId);
+})
+.patch((req, res) => {
+    const commentID = parseInt(req.params.id);
+    const updateBody = req.body.body;
+    const comment = comments.find(comment => comment.id === commentId);
+})
+.delete((req, res) => {
+    const commentId = parseInt(req.params.id);
+    const index = comments.findIndex(comment => comment.id === commentId);
 });
 
 app.use('/user', userRouter);
